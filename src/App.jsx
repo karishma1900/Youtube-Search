@@ -28,6 +28,12 @@ function App() {
       } else if (action === 'channel-search') {
         url = 'https://karishma125.app.n8n.cloud/webhook/989e6a50-d7fa-4162-8f02-f5f664072739';
       }
+    } else if (name === 'aiforfun') {
+      if (action === 'youtube-search') {
+        url = 'https://aisforfun.app.n8n.cloud/webhook/8426e9f4-c072-4cb2-8b8f-52de073a1f3a';
+      } else if (action === 'channel-search') {
+        url = 'https://aisforfun.app.n8n.cloud/webhook/4d0168f4-9152-4d1c-afa3-e03c91b7b4ea';
+      }
     }
 
     if (!url) {
@@ -77,6 +83,7 @@ function App() {
             <option value="">--Select--</option>
             <option value="karthik">Karthik</option>
             <option value="karishma">Karishma</option>
+            <option value="aiforfun">AI for Fun</option> {/* ✅ New option */}
           </select>
         </label>
 
