@@ -20,13 +20,13 @@ function App() {
       if (action === 'youtube-search') {
         url = 'https://thikkananda.app.n8n.cloud/webhook/f999c11d-0ba6-4102-8b4f-84cac72de457';
       } else if (action === 'channel-search') {
-        url = 'https://thikkananda.app.n8n.cloud/webhook-test/7440669c-6d45-43d5-90ed-2f363b2f0805';
+        url = 'https://thikkananda.app.n8n.cloud/webhook/7440669c-6d45-43d5-90ed-2f363b2f0805';
       }
     } else if (name === 'karishma') {
       if (action === 'youtube-search') {
-        url = 'https://karishma125.app.n8n.cloud/webhook-test/cd1bc2c8-fa96-4ee1-89d2-f017de7f0792';
+        url = 'https://karishma125.app.n8n.cloud/webhook/cd1bc2c8-fa96-4ee1-89d2-f017de7f0792';
       } else if (action === 'channel-search') {
-        url = 'https://karishma125.app.n8n.cloud/webhook-test/989e6a50-d7fa-4162-8f02-f5f664072739';
+        url = 'https://karishma125.app.n8n.cloud/webhook/989e6a50-d7fa-4162-8f02-f5f664072739';
       }
     }
 
