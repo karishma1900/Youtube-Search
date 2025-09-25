@@ -18,7 +18,7 @@ function App() {
     // ✅ Set API based on name and action
     if (name === 'karthik') {
       if (action === 'youtube-search') {
-        url = 'https://thikkananda.app.n8n.cloud/webhook-test/f999c11d-0ba6-4102-8b4f-84cac72de457';
+        url = 'https://thikkananda.app.n8n.cloud/webhook/f999c11d-0ba6-4102-8b4f-84cac72de457';
       } else if (action === 'channel-search') {
         url = 'https://thikkananda.app.n8n.cloud/webhook-test/7440669c-6d45-43d5-90ed-2f363b2f0805';
       }
