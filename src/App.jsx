@@ -16,41 +16,35 @@ function App() {
     let url = '';
 
     // ✅ Set API based on name and action
-    if (name === 'karthik') {
-      if (action === 'youtube-search') {
-        url = 'https://thikkananda.app.n8n.cloud/webhook/f999c11d-0ba6-4102-8b4f-84cac72de457';
-      } else if (action === 'channel-search') {
-        url = 'https://thikkananda.app.n8n.cloud/webhook/7440669c-6d45-43d5-90ed-2f363b2f0805';
-      }
-    } else if (name === 'karishma') {
-      if (action === 'youtube-search') {
-        url = 'https://karishma125.app.n8n.cloud/webhook/cd1bc2c8-fa96-4ee1-89d2-f017de7f0792';
-      } else if (action === 'channel-search') {
-        url = 'https://karishma125.app.n8n.cloud/webhook/989e6a50-d7fa-4162-8f02-f5f664072739';
-      }
-    } else if (name === 'aiforfun') {
-      if (action === 'youtube-search') {
-        url = 'https://aisforfun.app.n8n.cloud/webhook/8426e9f4-c072-4cb2-8b8f-52de073a1f3a';
-      } else if (action === 'channel-search') {
-        url = 'https://aisforfun.app.n8n.cloud/webhook/4d0168f4-9152-4d1c-afa3-e03c91b7b4ea';
-      }
-      else if (name === 'karishma.corporate') {  // ✅ New name
+   // ✅ Corrected API URL mapping
+if (name === 'karthik') {
   if (action === 'youtube-search') {
-    // You have **two webhooks** — pick either based on your logic
-    // Option 1:
-    // url = 'https://hook.eu2.make.com/atxtuditwkx89tk64f6ygdaix7umpte7';
-    // Option 2:
+    url = 'https://thikkananda.app.n8n.cloud/webhook/f999c11d-0ba6-4102-8b4f-84cac72de457';
+  } else if (action === 'channel-search') {
+    url = 'https://thikkananda.app.n8n.cloud/webhook/7440669c-6d45-43d5-90ed-2f363b2f0805';
+  }
+} else if (name === 'karishma') {
+  if (action === 'youtube-search') {
+    url = 'https://karishma125.app.n8n.cloud/webhook/cd1bc2c8-fa96-4ee1-89d2-f017de7f0792';
+  } else if (action === 'channel-search') {
+    url = 'https://karishma125.app.n8n.cloud/webhook/989e6a50-d7fa-4162-8f02-f5f664072739';
+  }
+} else if (name === 'aiforfun') {
+  if (action === 'youtube-search') {
+    url = 'https://aisforfun.app.n8n.cloud/webhook/8426e9f4-c072-4cb2-8b8f-52de073a1f3a';
+  } else if (action === 'channel-search') {
+    url = 'https://aisforfun.app.n8n.cloud/webhook/4d0168f4-9152-4d1c-afa3-e03c91b7b4ea';
+  }
+} else if (name === 'karishma.corporate') { // ✅ New name
+  if (action === 'youtube-search') {
     url = 'https://hook.eu2.make.com/atxtuditwkx89tk64f6ygdaix7umpte7';
   }
-        else if (name === 'karishma-make.com') {  // ✅ New name
+} else if (name === 'karishma-make.com') { // ✅ New name
   if (action === 'youtube-search') {
-    // You have **two webhooks** — pick either based on your logic
-    // Option 1:
-    // url = 'https://hook.eu2.make.com/atxtuditwkx89tk64f6ygdaix7umpte7';
-    // Option 2:
     url = 'https://hook.eu2.make.com/y4j9oty8c2cf21o76k1i0y78gvcgfb6s';
   }
-    }
+}
+
 
     if (!url) {
       toast.error('Please select a valid name and action.');
