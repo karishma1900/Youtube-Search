@@ -38,10 +38,14 @@ if (name === 'karthik') {
 } else if (name === 'karishma.corporate') { // ✅ New name
   if (action === 'youtube-search') {
     url = 'https://hook.eu2.make.com/atxtuditwkx89tk64f6ygdaix7umpte7';
+  }else if (action  === 'channel-search'){
+    url = 'https://hook.eu2.make.com/ppqouy72us8hjtke48fjw8myryyu6c85';
   }
 } else if (name === 'karishma-make.com') { // ✅ New name
   if (action === 'youtube-search') {
     url = 'https://hook.eu2.make.com/y4j9oty8c2cf21o76k1i0y78gvcgfb6s';
+  }else if (action === 'channel-search') {
+    url = 'https://hook.eu2.make.com/5fjmf1eip1uelw2tod3c8fc0rwe2qqom';
   }
 }
 
