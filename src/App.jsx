@@ -34,8 +34,15 @@ function App() {
       } else if (action === 'channel-search') {
         url = 'https://karishma125.app.n8n.cloud/webhook/989e6a50-d7fa-4162-8f02-f5f664072739';
       }
-    } else if (name === 'playlist-creator') { // New name for playlist creation
-      url = 'https://aisforfun.app.n8n.cloud/webhook/d4e783ad-b462-4c3c-aab0-df21ef05086e';
+    }else if (name === 'karishma.corporate') {
+      if (action === 'youtube-search') {
+        url = 'https://hook.eu2.make.com/atxtuditwkx89tk64f6ygdaix7umpte7';
+      } else if (action === 'channel-search') {
+        url = 'https://hook.eu2.make.com/ppqouy72us8hjtke48fjw8myryyu6c85';
+      }
+    }
+    else if (name === 'playlist-creator') { // New name for playlist creation
+      url = 'https://hook.eu2.make.com/id5lq2tldmutsaoldsbr95m6elmaca7f';
       payload.excelSheet = excelSheet; // Add ExcelSheet URL to the payload
     }
 
@@ -81,9 +88,9 @@ function App() {
             <option value="">--Select--</option>
             <option value="karthik">Karthik</option>
             <option value="karishma">Karishma</option>
-            <option value="aiforfun">AI for Fun</option> 
-            <option value="karishma.corporate">Karishma Corporate</option>
-            <option value="karishma-make.com">Karishma Make website</option>
+            {/* <option value="aiforfun">AI for Fun</option>  */}
+            <option value="karishma.corporate">TheAutomationMirror</option>
+            
             <option value="playlist-creator">Playlist Creator</option> {/* New name */}
           </select>
         </label>
