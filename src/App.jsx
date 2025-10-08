@@ -38,7 +38,7 @@ function App() {
       if (action === 'youtube-search') {
         url = 'https://hook.eu2.make.com/atxtuditwkx89tk64f6ygdaix7umpte7';
       } else if (action === 'channel-search') {
-        url = 'https://hook.eu2.make.com/ppqouy72us8hjtke48fjw8myryyu6c85';
+        url = 'https://hook.eu2.make.com/5fjmf1eip1uelw2tod3c8fc0rwe2qqom';
       }
     }
     else if (name === 'playlist-creator') { // New name for playlist creation
