@@ -10,7 +10,7 @@ function App() {
   const [description, setDescription] = useState('');
   const [tags, setTags] = useState('');
   const [excelSheet, setExcelSheet] = useState(''); // New state for ExcelSheet URL
-
+const [topic, setTopic] = useState('');
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -45,7 +45,13 @@ function App() {
       url = 'https://hook.eu2.make.com/id5lq2tldmutsaoldsbr95m6elmaca7f';
       payload.excelSheet = excelSheet; // Add ExcelSheet URL to the payload
     }
-
+else if (name === 'toneacademy') {
+  url = 'https://aiautomation15.app.n8n.cloud/webhook/e142e4a5-187e-4cd9-9957-37e979d2e639';
+  payload = {
+    topic,
+    category: 'blogs',
+  };
+}
     if (!url) {
       toast.error('Please select a valid name and action.');
       return;
@@ -92,6 +98,7 @@ function App() {
             <option value="karishma.corporate">TheAutomationMirror</option>
             
             <option value="playlist-creator">Playlist Creator</option> {/* New name */}
+            <option value="toneacademy">ToneAcademy</option>
           </select>
         </label>
 
@@ -139,6 +146,17 @@ function App() {
             />
           </label>
         )}
+{name === 'toneacademy' && (
+  <label className='labels'>
+    Topic Name:
+    <input
+      value={topic}
+      onChange={(e) => setTopic(e.target.value)}
+      placeholder="Enter topic name"
+      required
+    />
+  </label>
+)}
 
         <button type="submit">Submit</button>
       </form>
