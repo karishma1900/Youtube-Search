@@ -87,79 +87,87 @@ else if (name === 'toneacademy') {
     <div className="form-container">
       <h2>Submit YouTube Data</h2>
 
-      <form onSubmit={handleSubmit}>
-        <label className='labels'>
-          Select Name:
-          <select className='dropdown' value={name} onChange={(e) => setName(e.target.value)} required>
-            <option value="">--Select--</option>
-            <option value="karthik">Karthik</option>
-            <option value="karishma">Karishma</option>
-            {/* <option value="aiforfun">AI for Fun</option>  */}
-            <option value="karishma.corporate">TheAutomationMirror</option>
-            
-            <option value="playlist-creator">Playlist Creator</option> {/* New name */}
-            <option value="toneacademy">ToneAcademy</option>
-          </select>
-        </label>
-
-        {name !== 'playlist-creator' && (
-          <>
-            <label className='labels'>
-              Action Type:
-              <select value={action} onChange={(e) => setAction(e.target.value)} required>
-                <option value="">--Select--</option>
-                <option value="youtube-search">YouTube Search</option>
-                <option value="channel-search">Channel Search</option>
-              </select>
-            </label>
-
-            <label className='labels'>
-              Tags:
-              <input
-                value={tags}
-                onChange={(e) => setTags(e.target.value)}
-                placeholder="Comma-separated tags (e.g., AI, React)"
-                required
-              />
-            </label>
-          </>
-        )}
-
-        <label className='labels'>
-          Title:
-          <input value={title} onChange={(e) => setTitle(e.target.value)} required />
-        </label>
-
-        <label className='labels'>
-          Description:
-          <input value={description} onChange={(e) => setDescription(e.target.value)} required />
-        </label>
-
-        {name === 'playlist-creator' && (
-          <label className='labels'>
-            ExcelSheet URL:
-            <input
-              value={excelSheet}
-              onChange={(e) => setExcelSheet(e.target.value)}
-              placeholder="Enter Excel Sheet URL"
-              required
-            />
-          </label>
-        )}
-{name === 'toneacademy' && (
+     <form onSubmit={handleSubmit}>
   <label className='labels'>
-    Topic Name:
-    <input
-      value={topic}
-      onChange={(e) => setTopic(e.target.value)}
-      placeholder="Enter topic name"
-      required
-    />
+    Select Name:
+    <select className='dropdown' value={name} onChange={(e) => setName(e.target.value)} required>
+      <option value="">--Select--</option>
+      <option value="karthik">Karthik</option>
+      <option value="karishma">Karishma</option>
+      <option value="karishma.corporate">TheAutomationMirror</option>
+      <option value="playlist-creator">Playlist Creator</option>
+      <option value="toneacademy">ToneAcademy</option>
+    </select>
   </label>
-)}
 
-        <button type="submit">Submit</button>
-      </form>
+  {/* Show Action + Tags ONLY if not playlist-creator or toneacademy */}
+  {!['playlist-creator', 'toneacademy'].includes(name) && (
+    <>
+      <label className='labels'>
+        Action Type:
+        <select value={action} onChange={(e) => setAction(e.target.value)} required>
+          <option value="">--Select--</option>
+          <option value="youtube-search">YouTube Search</option>
+          <option value="channel-search">Channel Search</option>
+        </select>
+      </label>
+
+      <label className='labels'>
+        Tags:
+        <input
+          value={tags}
+          onChange={(e) => setTags(e.target.value)}
+          placeholder="Comma-separated tags (e.g., AI, React)"
+          required
+        />
+      </label>
+    </>
+  )}
+
+  {/* Show Title and Description ONLY if not toneacademy or playlist-creator */}
+  {!['playlist-creator', 'toneacademy'].includes(name) && (
+    <>
+      <label className='labels'>
+        Title:
+        <input value={title} onChange={(e) => setTitle(e.target.value)} required />
+      </label>
+
+      <label className='labels'>
+        Description:
+        <input value={description} onChange={(e) => setDescription(e.target.value)} required />
+      </label>
+    </>
+  )}
+
+  {/* Show ExcelSheet URL only if playlist-creator */}
+  {name === 'playlist-creator' && (
+    <label className='labels'>
+      ExcelSheet URL:
+      <input
+        value={excelSheet}
+        onChange={(e) => setExcelSheet(e.target.value)}
+        placeholder="Enter Excel Sheet URL"
+        required
+      />
+    </label>
+  )}
+
+  {/* Show Topic Name only if toneacademy */}
+  {name === 'toneacademy' && (
+    <label className='labels'>
+      Topic Name:
+      <input
+        value={topic}
+        onChange={(e) => setTopic(e.target.value)}
+        placeholder="Enter topic name"
+        required
+      />
+    </label>
+  )}
+
+  <button type="submit">Submit</button>
+</form>
+
 
       {/* Toast Container */}
       <ToastContainer position="top-right" autoClose={3000} />
