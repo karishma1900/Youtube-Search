@@ -151,18 +151,7 @@ function App() {
         )}
 
         {/* Hide Title + Description for toneacademy, playlist-creator, facebook-post */}
-        {['toneacademy', 'facebook-post', 'youtube-upload'].includes(name) && (
-  <label className='labels'>
-    {name === 'youtube-upload' ? 'Folder URL:' : 'Topic Name:'}
-    <input
-      value={topic}
-      onChange={(e) => setTopic(e.target.value)}
-      placeholder={name === 'youtube-upload' ? "Enter folder URL" : "Enter topic name"}
-      required
-    />
-  </label>
-)}
-
+        {!['toneacademy', 'playlist-creator', 'facebook-post'].includes(name) && ( <> <label className='labels'> Title: <input value={title} onChange={(e) => setTitle(e.target.value)} required /> </label> <label className='labels'> Description: <input value={description} onChange={(e) => setDescription(e.target.value)} required /> </label> </> )}
 
         {/* Excel Sheet field */}
         {name === 'playlist-creator' && (
