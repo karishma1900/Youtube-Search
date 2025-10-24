@@ -51,17 +51,18 @@ function App() {
         category: 'blogs',
       };
     } 
-      else if (name === 'youtube-upload') {
-  url = 'https://makeagents250.app.n8n.cloud/webhook/2df64ee6-e8aa-41c8-9399-e012506a36dd';
-  payload = {
-    folderLink: topic, // send folder URL as "folderLink"
-  };
-}
-    // --- NEW SECTION: Facebook Post ---
+    // --- Facebook Post ---
     else if (name === 'facebook-post') {
       url = 'https://makeagents250.app.n8n.cloud/webhook/625fb4f9-c22b-4982-934f-22c5571389a1';
       payload = {
-        Topic: topic, // as per your request
+        Topic: topic,
+      };
+    }
+    // --- YouTube Upload ---
+    else if (name === 'youtube-upload') {
+      url = 'https://makeagents250.app.n8n.cloud/webhook/2df64ee6-e8aa-41c8-9399-e012506a36dd';
+      payload = {
+        folderLink: topic, // topic used as folder URL
       };
     }
 
@@ -116,14 +117,13 @@ function App() {
             <option value="karishma.corporate">TheAutomationMirror</option>
             <option value="playlist-creator">Playlist Creator</option>
             <option value="toneacademy">ToneAcademy</option>
-            {/* ✅ New Option */}
             <option value="facebook-post">Facebook Post</option>
-            <option value="youtube-upload">YouTube Upload</option>
+            <option value="youtube-upload">YouTube Upload</option> {/* ✅ New Option */}
           </select>
         </label>
 
-        {/* Hide Action + Tags for playlist-creator, toneacademy, facebook-post */}
-        {!['playlist-creator', 'toneacademy', 'facebook-post'].includes(name) && (
+        {/* Hide Action + Tags for playlist-creator, toneacademy, facebook-post, youtube-upload */}
+        {!['playlist-creator', 'toneacademy', 'facebook-post', 'youtube-upload'].includes(name) && (
           <>
             <label className='labels'>
               Action Type:
@@ -150,8 +150,28 @@ function App() {
           </>
         )}
 
-        {/* Hide Title + Description for toneacademy, playlist-creator, facebook-post */}
-        {!['toneacademy', 'playlist-creator', 'facebook-post'].includes(name) && ( <> <label className='labels'> Title: <input value={title} onChange={(e) => setTitle(e.target.value)} required /> </label> <label className='labels'> Description: <input value={description} onChange={(e) => setDescription(e.target.value)} required /> </label> </> )}
+        {/* Hide Title + Description for toneacademy, playlist-creator, facebook-post, youtube-upload */}
+        {!['toneacademy', 'playlist-creator', 'facebook-post', 'youtube-upload'].includes(name) && (
+          <>
+            <label className='labels'>
+              Title:
+              <input
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
+            </label>
+
+            <label className='labels'>
+              Description:
+              <input
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
+              />
+            </label>
+          </>
+        )}
 
         {/* Excel Sheet field */}
         {name === 'playlist-creator' && (
@@ -166,14 +186,14 @@ function App() {
           </label>
         )}
 
-        {/* Topic field for toneacademy and facebook-post */}
-        {['toneacademy', 'facebook-post'].includes(name) && (
+        {/* Topic / Folder field */}
+        {['toneacademy', 'facebook-post', 'youtube-upload'].includes(name) && (
           <label className='labels'>
-            Topic Name:
+            {name === 'youtube-upload' ? 'Folder URL:' : 'Topic Name:'}
             <input
               value={topic}
               onChange={(e) => setTopic(e.target.value)}
-              placeholder="Enter topic name"
+              placeholder={name === 'youtube-upload' ? "Enter folder URL" : "Enter topic name"}
               required
             />
           </label>
