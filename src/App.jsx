@@ -9,8 +9,9 @@ function App() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [tags, setTags] = useState('');
-  const [excelSheet, setExcelSheet] = useState(''); // New state for ExcelSheet URL
-const [topic, setTopic] = useState('');
+  const [excelSheet, setExcelSheet] = useState('');
+  const [topic, setTopic] = useState('');
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -18,10 +19,10 @@ const [topic, setTopic] = useState('');
     let payload = {
       title,
       description,
-      tags: tags.split(',').map(tag => tag.trim()), // Convert tags to array
+      tags: tags.split(',').map(tag => tag.trim()),
     };
 
-    // Handle API URL mapping based on name and action
+    // --- EXISTING LOGIC ---
     if (name === 'karthik') {
       if (action === 'youtube-search') {
         url = 'https://thikkananda.app.n8n.cloud/webhook/f999c11d-0ba6-4102-8b4f-84cac72de457';
@@ -34,24 +35,30 @@ const [topic, setTopic] = useState('');
       } else if (action === 'channel-search') {
         url = 'https://karishma125.app.n8n.cloud/webhook/989e6a50-d7fa-4162-8f02-f5f664072739';
       }
-    }else if (name === 'karishma.corporate') {
+    } else if (name === 'karishma.corporate') {
       if (action === 'youtube-search') {
         url = 'https://hook.eu2.make.com/atxtuditwkx89tk64f6ygdaix7umpte7';
       } else if (action === 'channel-search') {
         url = 'https://hook.eu2.make.com/5fjmf1eip1uelw2tod3c8fc0rwe2qqom';
       }
-    }
-    else if (name === 'playlist-creator') { // New name for playlist creation
+    } else if (name === 'playlist-creator') {
       url = 'https://hook.eu2.make.com/id5lq2tldmutsaoldsbr95m6elmaca7f';
-      payload.excelSheet = excelSheet; // Add ExcelSheet URL to the payload
+      payload.excelSheet = excelSheet;
+    } else if (name === 'toneacademy') {
+      url = 'https://aiautomation15.app.n8n.cloud/webhook/e142e4a5-187e-4cd9-9957-37e979d2e639';
+      payload = {
+        topic,
+        category: 'blogs',
+      };
+    } 
+    // --- NEW SECTION: Facebook Post ---
+    else if (name === 'facebook-post') {
+      url = 'https://makeagents250.app.n8n.cloud/webhook/625fb4f9-c22b-4982-934f-22c5571389a1';
+      payload = {
+        Topic: topic, // as per your request
+      };
     }
-else if (name === 'toneacademy') {
-  url = 'https://aiautomation15.app.n8n.cloud/webhook/e142e4a5-187e-4cd9-9957-37e979d2e639';
-  payload = {
-    topic,
-    category: 'blogs',
-  };
-}
+
     if (!url) {
       toast.error('Please select a valid name and action.');
       return;
@@ -76,7 +83,8 @@ else if (name === 'toneacademy') {
       setTitle('');
       setDescription('');
       setTags('');
-      setExcelSheet(''); // Reset ExcelSheet URL field
+      setExcelSheet('');
+      setTopic('');
     } catch (err) {
       console.error('Error:', err);
       toast.error('Submission failed! ❌');
@@ -87,89 +95,106 @@ else if (name === 'toneacademy') {
     <div className="form-container">
       <h2>Submit YouTube Data</h2>
 
-     <form onSubmit={handleSubmit}>
-  <label className='labels'>
-    Select Name:
-    <select className='dropdown' value={name} onChange={(e) => setName(e.target.value)} required>
-      <option value="">--Select--</option>
-      <option value="karthik">Karthik</option>
-      <option value="karishma">Karishma</option>
-      <option value="karishma.corporate">TheAutomationMirror</option>
-      <option value="playlist-creator">Playlist Creator</option>
-      <option value="toneacademy">ToneAcademy</option>
-    </select>
-  </label>
+      <form onSubmit={handleSubmit}>
+        <label className='labels'>
+          Select Name:
+          <select
+            className='dropdown'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          >
+            <option value="">--Select--</option>
+            <option value="karthik">Karthik</option>
+            <option value="karishma">Karishma</option>
+            <option value="karishma.corporate">TheAutomationMirror</option>
+            <option value="playlist-creator">Playlist Creator</option>
+            <option value="toneacademy">ToneAcademy</option>
+            {/* ✅ New Option */}
+            <option value="facebook-post">Facebook Post</option>
+          </select>
+        </label>
 
-  {/* Show Action + Tags ONLY if not playlist-creator or toneacademy */}
-  {!['playlist-creator', 'toneacademy'].includes(name) && (
-    <>
-      <label className='labels'>
-        Action Type:
-        <select value={action} onChange={(e) => setAction(e.target.value)} required>
-          <option value="">--Select--</option>
-          <option value="youtube-search">YouTube Search</option>
-          <option value="channel-search">Channel Search</option>
-        </select>
-      </label>
+        {/* Hide Action + Tags for playlist-creator, toneacademy, facebook-post */}
+        {!['playlist-creator', 'toneacademy', 'facebook-post'].includes(name) && (
+          <>
+            <label className='labels'>
+              Action Type:
+              <select
+                value={action}
+                onChange={(e) => setAction(e.target.value)}
+                required
+              >
+                <option value="">--Select--</option>
+                <option value="youtube-search">YouTube Search</option>
+                <option value="channel-search">Channel Search</option>
+              </select>
+            </label>
 
-      <label className='labels'>
-        Tags:
-        <input
-          value={tags}
-          onChange={(e) => setTags(e.target.value)}
-          placeholder="Comma-separated tags (e.g., AI, React)"
-          required
-        />
-      </label>
-    </>
-  )}
+            <label className='labels'>
+              Tags:
+              <input
+                value={tags}
+                onChange={(e) => setTags(e.target.value)}
+                placeholder="Comma-separated tags (e.g., AI, React)"
+                required
+              />
+            </label>
+          </>
+        )}
 
-  {/* Show Title and Description ONLY if not toneacademy or playlist-creator */}
-  {!['playlist-creator', 'toneacademy'].includes(name) && (
-    <>
-      <label className='labels'>
-        Title:
-        <input value={title} onChange={(e) => setTitle(e.target.value)} required />
-      </label>
+        {/* Hide Title + Description for toneacademy, playlist-creator, facebook-post */}
+        {!['toneacademy', 'playlist-creator', 'facebook-post'].includes(name) && (
+          <>
+            <label className='labels'>
+              Title:
+              <input
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
+            </label>
 
-      <label className='labels'>
-        Description:
-        <input value={description} onChange={(e) => setDescription(e.target.value)} required />
-      </label>
-    </>
-  )}
+            <label className='labels'>
+              Description:
+              <input
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
+              />
+            </label>
+          </>
+        )}
 
-  {/* Show ExcelSheet URL only if playlist-creator */}
-  {name === 'playlist-creator' && (
-    <label className='labels'>
-      ExcelSheet URL:
-      <input
-        value={excelSheet}
-        onChange={(e) => setExcelSheet(e.target.value)}
-        placeholder="Enter Excel Sheet URL"
-        required
-      />
-    </label>
-  )}
+        {/* Excel Sheet field */}
+        {name === 'playlist-creator' && (
+          <label className='labels'>
+            ExcelSheet URL:
+            <input
+              value={excelSheet}
+              onChange={(e) => setExcelSheet(e.target.value)}
+              placeholder="Enter Excel Sheet URL"
+              required
+            />
+          </label>
+        )}
 
-  {/* Show Topic Name only if toneacademy */}
-  {name === 'toneacademy' && (
-    <label className='labels'>
-      Topic Name:
-      <input
-        value={topic}
-        onChange={(e) => setTopic(e.target.value)}
-        placeholder="Enter topic name"
-        required
-      />
-    </label>
-  )}
+        {/* Topic field for toneacademy and facebook-post */}
+        {['toneacademy', 'facebook-post'].includes(name) && (
+          <label className='labels'>
+            Topic Name:
+            <input
+              value={topic}
+              onChange={(e) => setTopic(e.target.value)}
+              placeholder="Enter topic name"
+              required
+            />
+          </label>
+        )}
 
-  <button type="submit">Submit</button>
-</form>
+        <button type="submit">Submit</button>
+      </form>
 
-
-      {/* Toast Container */}
       <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
