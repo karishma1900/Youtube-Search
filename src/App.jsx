@@ -51,6 +51,12 @@ function App() {
         category: 'blogs',
       };
     } 
+      else if (name === 'youtube-upload') {
+  url = 'https://makeagents250.app.n8n.cloud/webhook/2df64ee6-e8aa-41c8-9399-e012506a36dd';
+  payload = {
+    folderLink: topic, // send folder URL as "folderLink"
+  };
+}
     // --- NEW SECTION: Facebook Post ---
     else if (name === 'facebook-post') {
       url = 'https://makeagents250.app.n8n.cloud/webhook/625fb4f9-c22b-4982-934f-22c5571389a1';
@@ -112,6 +118,7 @@ function App() {
             <option value="toneacademy">ToneAcademy</option>
             {/* ✅ New Option */}
             <option value="facebook-post">Facebook Post</option>
+            <option value="youtube-upload">YouTube Upload</option>
           </select>
         </label>
 
@@ -144,27 +151,18 @@ function App() {
         )}
 
         {/* Hide Title + Description for toneacademy, playlist-creator, facebook-post */}
-        {!['toneacademy', 'playlist-creator', 'facebook-post'].includes(name) && (
-          <>
-            <label className='labels'>
-              Title:
-              <input
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-              />
-            </label>
+        {['toneacademy', 'facebook-post', 'youtube-upload'].includes(name) && (
+  <label className='labels'>
+    {name === 'youtube-upload' ? 'Folder URL:' : 'Topic Name:'}
+    <input
+      value={topic}
+      onChange={(e) => setTopic(e.target.value)}
+      placeholder={name === 'youtube-upload' ? "Enter folder URL" : "Enter topic name"}
+      required
+    />
+  </label>
+)}
 
-            <label className='labels'>
-              Description:
-              <input
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                required
-              />
-            </label>
-          </>
-        )}
 
         {/* Excel Sheet field */}
         {name === 'playlist-creator' && (
