@@ -148,10 +148,10 @@ function App() {
               />
             </label>
           </>
-        )}
+        )} */}
 
         {/* Hide Title + Description for toneacademy, playlist-creator, facebook-post, youtube-upload */}
-        {!['toneacademy', 'playlist-creator', 'facebook-post', 'youtube-upload'].includes(name) && (
+      {/*  {!['toneacademy', 'playlist-creator', 'facebook-post', 'youtube-upload'].includes(name) && (
           <>
             <label className='labels'>
               Title:
