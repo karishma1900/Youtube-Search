@@ -45,7 +45,7 @@ function App() {
       url = 'https://hook.eu2.make.com/id5lq2tldmutsaoldsbr95m6elmaca7f';
       payload.excelSheet = excelSheet;
     } else if (name === 'toneacademy') {
-      url = 'https://aiautomation15.app.n8n.cloud/webhook/e142e4a5-187e-4cd9-9957-37e979d2e639';
+      url = 'https://makeagents250.app.n8n.cloud/webhook/e142e4a5-187e-4cd9-9957-37e979d2e639';
       payload = {
         topic,
         category: 'blogs',
@@ -112,10 +112,10 @@ function App() {
             required
           >
             <option value="">--Select--</option>
-            <option value="karthik">Karthik</option>
+            {/* <option value="karthik">Karthik</option>
             <option value="karishma">Karishma</option>
-            <option value="karishma.corporate">TheAutomationMirror</option>
-            <option value="playlist-creator">Playlist Creator</option>
+            <option value="karishma.corporate">TheAutomationMirror</option> */}
+            {/* <option value="playlist-creator">Playlist Creator</option> */}
             <option value="toneacademy">ToneAcademy</option>
             <option value="facebook-post">Facebook Post</option>
             <option value="youtube-upload">YouTube Upload</option> {/* ✅ New Option */}
