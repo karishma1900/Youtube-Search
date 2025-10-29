@@ -123,7 +123,7 @@ function App() {
         </label>
 
         {/* Hide Action + Tags for playlist-creator, toneacademy, facebook-post, youtube-upload */}
-        /* {!['playlist-creator', 'toneacademy', 'facebook-post', 'youtube-upload'].includes(name) && (
+       {/*  {!['playlist-creator', 'toneacademy', 'facebook-post', 'youtube-upload'].includes(name) && (
           <>
             <label className='labels'>
               Action Type:
@@ -171,7 +171,7 @@ function App() {
               />
             </label>
           </>
-        )} */
+        )} */}
 
         {/* Excel Sheet field */}
         {name === 'playlist-creator' && (
